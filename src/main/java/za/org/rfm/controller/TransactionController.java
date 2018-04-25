@@ -1,0 +1,46 @@
+package za.org.rfm.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.Date;
+import java.util.List;
+
+import za.org.rfm.entity.Assembly;
+import za.org.rfm.entity.Transaction;
+import za.org.rfm.service.TransactionService;
+import za.org.rfm.utils.GeneralUtils;
+
+@Controller
+@RequestMapping("transaction")
+public class TransactionController {
+
+    @Autowired
+    private TransactionService transactionService;
+
+    @GetMapping("assembly/{id}/{startDate}/{endDate}")
+    public ResponseEntity<List<Transaction>> getTransactionByAssembly(@PathVariable("id") Integer id,@PathVariable("startDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String startDate,
+                                                           @PathVariable("endDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String endDate) {
+        List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(startDate),GeneralUtils.getDateFromString(endDate));
+        return new ResponseEntity<List<Transaction>>(list, HttpStatus.OK);
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<Void> addTransaction(@RequestBody Transaction transaction,@PathVariable("id") Integer id, UriComponentsBuilder builder) {
+        transactionService.addTransaction(transaction,id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(builder.path("{id}").buildAndExpand(transaction.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+}
