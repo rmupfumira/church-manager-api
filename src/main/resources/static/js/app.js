@@ -17,7 +17,7 @@ angular.module('rfmApp', [])
         $scope.getTransactions = function(){
             $http({
                       method: 'GET',
-                      url: 'http://localhost:3140/transaction/assembly/98304/2018-04-20/2018-04-29'
+                      url: 'http://localhost:1985/transaction/assembly/98304/2018-04-20/2018-04-29'
                   }).then(function successCallback(response) {
 
                       if(response.data){
