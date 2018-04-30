@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/login")
 public class LoginController {
+
+    private String message = "Hello World";
 
     @RequestMapping("/")
     String home(ModelMap modal) {
         modal.addAttribute("title","RFM Finance Dashboard");
-        return "index.html";
+        return "index";
     }
 
 

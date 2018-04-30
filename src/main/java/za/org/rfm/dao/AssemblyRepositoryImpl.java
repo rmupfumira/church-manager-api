@@ -21,7 +21,7 @@ public class AssemblyRepositoryImpl implements AssemblyRepository {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Assembly> getAllAssemblies() {
-		String hql = "FROM Assembly as atcl ORDER BY atcl.assemblyId";
+		String hql = "FROM Assembly ";
 		return (List<Assembly>) entityManager.createQuery(hql).getResultList();
 	}	
 	@Override

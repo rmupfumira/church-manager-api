@@ -18,6 +18,7 @@ import java.util.List;
 
 import za.org.rfm.entity.Assembly;
 import za.org.rfm.entity.Transaction;
+import za.org.rfm.entity.TransactionResponseObj;
 import za.org.rfm.service.TransactionService;
 import za.org.rfm.utils.GeneralUtils;
 
@@ -29,10 +30,12 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @GetMapping("assembly/{id}/{startDate}/{endDate}")
-    public ResponseEntity<List<Transaction>> getTransactionByAssembly(@PathVariable("id") Integer id,@PathVariable("startDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String startDate,
+    public ResponseEntity<TransactionResponseObj> getTransactionByAssembly(@PathVariable("id") Integer id,@PathVariable("startDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String startDate,
                                                            @PathVariable("endDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String endDate) {
         List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(startDate),GeneralUtils.getDateFromString(endDate));
-        return new ResponseEntity<List<Transaction>>(list, HttpStatus.OK);
+        TransactionResponseObj transactionResponseObj = new TransactionResponseObj();
+        transactionResponseObj.setTransactionList(list);
+        return new ResponseEntity<TransactionResponseObj>(transactionResponseObj, HttpStatus.OK);
     }
 
     @PostMapping("/{id}")
