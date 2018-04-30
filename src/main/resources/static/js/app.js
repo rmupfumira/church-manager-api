@@ -1,6 +1,6 @@
 angular.module('rfmApp', [])
     .controller('MainController', function($scope,$http) {
-        $scope.urlBase = 'http://localhost:1985/transaction/assembly';
+        $scope.urlBase = 'http://41.185.27.50:1985/transaction/assembly';
         $scope.url = '';
         $scope.dataSet = [];
         $scope.totalIncome = 0.00;
