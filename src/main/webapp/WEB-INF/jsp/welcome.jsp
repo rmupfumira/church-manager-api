@@ -22,12 +22,12 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">RFM Finance Dashboard</a>
+            <a class="navbar-brand" href="#">RFM Statistics Dashboard</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <%--<li><a href="#about">About</a></li>--%>
+                <li class="active"><a href="#">Finance</a></li>
+                <li><a href="#about">Attendance</a></li>
             </ul>
         </div>
     </div>
@@ -66,7 +66,7 @@
                 </div>
             </form>
             <br>
-            <div class="panel panel-default" ng-show="onSuccess">
+            <div class="panel panel-default" ng-show="onSuccess && $scope.dataSet.length > 0">
                 <div class="panel-heading">Transactions Summary</div>
                 <div class="panel-body">
 
@@ -95,7 +95,7 @@
 
         </div>
 
-        <div ng-show="onSuccess">
+        <div ng-show="onSuccess && $scope.dataSet.length > 0">
             <form class="inline">
                 <button type="button" class="btn btn-primary" ng-click="downloadCSV()"><span class="glyphicon glyphicon-download-alt"></span>Download CSV</button>
                 <%--<button type="button" class="btn btn-primary">Send To Email</button>--%>

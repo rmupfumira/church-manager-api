@@ -63,6 +63,9 @@ angular.module('rfmApp', [])
 
         }
         $scope.downloadCSV = function(){
+            if($scope.dataSet.length < 1){
+                return;
+            }
             var rows = $scope.dataSet;
             var csvContent = "data:text/csv;charset=utf-8,";
             rows.forEach(function(rowArray){
