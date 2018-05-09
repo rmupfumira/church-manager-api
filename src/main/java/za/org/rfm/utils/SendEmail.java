@@ -12,7 +12,7 @@ public class SendEmail {
         Content content = new Content("text/plain", message);
         Mail mail = new Mail(from, subject, to, content);
 
-        SendGrid sg = new SendGrid(Constants.SENDGRID_MAIL_API_KEY);
+        SendGrid sg = new SendGrid(Constants.Chacharak);
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
