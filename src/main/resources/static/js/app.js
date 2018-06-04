@@ -60,7 +60,7 @@ angular.module('rfmApp', [])
             if(computerResponse == 1){
                 type = "Income";
             }else{
-                type = "Expenditure";
+                type = "Expense";
             }
 
             if($scope.selectedAssembly != null && $scope.datesSet()){
