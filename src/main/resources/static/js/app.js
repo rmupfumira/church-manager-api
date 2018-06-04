@@ -55,13 +55,25 @@ angular.module('rfmApp', [])
         }
 
         $scope.submitForm = function(){
+            var computerResponse = getRandomInt(1, 2);
+            var type = ""
+            if(computerResponse == 1){
+                type = "Income";
+            }else{
+                type = "Expenditure";
+            }
 
             if($scope.selectedAssembly != null && $scope.datesSet()){
-                $scope.url = $scope.urlBase+"/"+$scope.selectedAssembly.id+"/"+$scope.startDate+"/"+$scope.endDate;
+                $scope.url = $scope.urlBase+"/"+$scope.selectedAssembly.id+"/"+$scope.startDate+"/"+$scope.endDate+"/"+type;
                 $scope.getTransactions();
             }
 
         }
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+
         $scope.downloadCSV = function(){
             if($scope.dataSet.length < 1){
                 return;
