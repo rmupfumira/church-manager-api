@@ -29,6 +29,11 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
+    public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate) {
+        return transactionRepository.getTransactionsByAssembly(assemblyId,startDate,endDate);
+    }
+
+    @Override
     public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate,String type) {
         return transactionRepository.getTransactionsByAssembly(assemblyId,startDate,endDate,type);
     }
