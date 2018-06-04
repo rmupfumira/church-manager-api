@@ -9,5 +9,5 @@ public interface TransactionService {
 
     public void addTransaction(Transaction transaction,Integer assemblyId);
 
-    public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate);
+    public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate,String type);
 }

@@ -31,8 +31,8 @@ public class TransactionController {
 
     @GetMapping("assembly/{id}/{startDate}/{endDate}")
     public ResponseEntity<TransactionResponseObj> getTransactionByAssembly(@PathVariable("id") Integer id,@PathVariable("startDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String startDate,
-                                                           @PathVariable("endDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String endDate) {
-        List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(startDate),GeneralUtils.getDateFromString(endDate));
+                                                           @PathVariable("endDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String endDate,@PathVariable("type") String type) {
+        List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(startDate),GeneralUtils.getDateFromString(endDate),type);
         TransactionResponseObj transactionResponseObj = new TransactionResponseObj();
         transactionResponseObj.setTransactionList(list);
         return new ResponseEntity<TransactionResponseObj>(transactionResponseObj, HttpStatus.OK);

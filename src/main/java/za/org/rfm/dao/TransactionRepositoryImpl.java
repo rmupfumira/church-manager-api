@@ -24,12 +24,24 @@ public class TransactionRepositoryImpl implements TransactionRepository {
     }
 
     @Override
-    public List<Transaction> getTransactionsByAssembly(Integer assemblyId,Date startDate, Date endDate) {
-        String hql = "FROM Transaction t where t.assembly.id = :assemblyId AND created BETWEEN :startDate AND :endDate ";
-        return (List<Transaction>)entityManager.createQuery(hql)
-                .setParameter("assemblyId",assemblyId)
-                .setParameter("startDate",startDate)
-                .setParameter("endDate",endDate)
-                .getResultList();
+    public List<Transaction> getTransactionsByAssembly(Integer assemblyId,Date startDate, Date endDate,String type) {
+        String hql = "";
+        if(type == null || type.equals("")){
+            hql = "FROM Transaction t where t.assembly.id = :assemblyId AND created BETWEEN :startDate AND :endDate AND type = :type";
+            return (List<Transaction>)entityManager.createQuery(hql)
+                    .setParameter("assemblyId",assemblyId)
+                    .setParameter("startDate",startDate)
+                    .setParameter("endDate",endDate)
+                    .setParameter("type",type)
+                    .getResultList();
+        }else{
+            hql = "FROM Transaction t where t.assembly.id = :assemblyId AND created BETWEEN :startDate AND :endDate ";
+            return (List<Transaction>)entityManager.createQuery(hql)
+                    .setParameter("assemblyId",assemblyId)
+                    .setParameter("startDate",startDate)
+                    .setParameter("endDate",endDate)
+                    .getResultList();
+        }
+
     }
 }

@@ -10,5 +10,5 @@ public interface TransactionRepository {
 
     public void addTransaction(Transaction transaction);
 
-    public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate);
+    public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate,String type);
 }
