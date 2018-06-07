@@ -24,11 +24,10 @@ public class WelcomeController {
     private EmailService emailService;
 
     @RequestMapping("/")
-    public String welcome(Map<String, Object> model) {
+    public void welcome(Map<String, Object> model) {
         List<Assembly> assemblyList = assemblyService.getAllAssemblies();
         model.put("assemblyList", assemblyList);
         model.put("urlBase", assemblyList);
-        return "welcome";
     }
     @PostMapping("/guest")
     public void sendWebsiteEnquiryEmail(@RequestBody Guest guest){
