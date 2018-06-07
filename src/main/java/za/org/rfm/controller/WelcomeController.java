@@ -14,7 +14,7 @@ import za.org.rfm.entity.Assembly;
 import za.org.rfm.service.AssemblyService;
 import za.org.rfm.service.EmailService;
 
-@Controller
+@Controller("webapi")
 public class WelcomeController {
 
     @Autowired
@@ -31,10 +31,9 @@ public class WelcomeController {
         return "welcome";
     }
     @PostMapping("/guest")
-    public String sendWebsiteEnquiryEmail(@RequestBody Guest guest){
+    public void sendWebsiteEnquiryEmail(@RequestBody Guest guest){
         emailService.sendWebSiteEmail(guest);
 
-        return "Done!";
     }
 
 }
