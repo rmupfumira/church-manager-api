@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.RestController;
 import za.org.rfm.entity.Guest;
 import za.org.rfm.entity.Assembly;
 import za.org.rfm.service.AssemblyService;
 import za.org.rfm.service.EmailService;
 
-@Controller("webapi")
+@RestController
 public class WelcomeController {
 
     @Autowired
@@ -24,10 +25,8 @@ public class WelcomeController {
     private EmailService emailService;
 
     @RequestMapping("/")
-    public void welcome(Map<String, Object> model) {
-        List<Assembly> assemblyList = assemblyService.getAllAssemblies();
-        model.put("assemblyList", assemblyList);
-        model.put("urlBase", assemblyList);
+    public String welcome(Map<String, Object> model) {
+        return "Church manager Api Working!";
     }
     @PostMapping("/guest")
     public void sendWebsiteEnquiryEmail(@RequestBody Guest guest){

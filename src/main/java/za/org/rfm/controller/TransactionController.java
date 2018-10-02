@@ -20,6 +20,7 @@ import za.org.rfm.entity.Assembly;
 import za.org.rfm.entity.Transaction;
 import za.org.rfm.entity.TransactionResponseObj;
 import za.org.rfm.service.TransactionService;
+import za.org.rfm.utils.Constants;
 import za.org.rfm.utils.GeneralUtils;
 
 @Controller
@@ -32,7 +33,7 @@ public class TransactionController {
     @GetMapping("assembly/{id}/{startDate}/{endDate}")
     public ResponseEntity<TransactionResponseObj> getTransactionByAssembly(@PathVariable("id") Integer id,@PathVariable("startDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String startDate,
                                                                            @PathVariable("endDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String endDate) {
-        List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(startDate),GeneralUtils.getDateFromString(endDate));
+        List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(Constants.DATE_FORMAT_TXN,startDate),GeneralUtils.getDateFromString(Constants.DATE_FORMAT_TXN,endDate));
         TransactionResponseObj transactionResponseObj = new TransactionResponseObj();
         transactionResponseObj.setTransactionList(list);
         return new ResponseEntity<TransactionResponseObj>(transactionResponseObj, HttpStatus.OK);
@@ -41,7 +42,7 @@ public class TransactionController {
     @GetMapping("assembly/{id}/{startDate}/{endDate}/{type}")
     public ResponseEntity<TransactionResponseObj> getTransactionByAssembly(@PathVariable("id") Integer id,@PathVariable("startDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String startDate,
                                                            @PathVariable("endDate") @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) String endDate,@PathVariable("type") String type) {
-        List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(startDate),GeneralUtils.getDateFromString(endDate),type);
+        List<Transaction> list = transactionService.getTransactionsByAssembly(id,GeneralUtils.getDateFromString(Constants.DATE_FORMAT_TXN,startDate),GeneralUtils.getDateFromString(Constants.DATE_FORMAT_TXN,endDate),type);
         TransactionResponseObj transactionResponseObj = new TransactionResponseObj();
         transactionResponseObj.setTransactionList(list);
         return new ResponseEntity<TransactionResponseObj>(transactionResponseObj, HttpStatus.OK);
