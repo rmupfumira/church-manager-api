@@ -54,11 +54,11 @@ public class GoogleSheetsIntegrationTest {
 
         Map<String, String> people = new HashMap<>();
 
-        people.put("Babra Muzeza","testing1111");
-        people.put("Monica Were","testing2222");
+        people.put("Angeline Milazi","testing1111");
+        people.put("Avela Mthini","testing2222");
 
         LogSheet logSheet = new LogSheet();
-        logSheet.setEventDate("1/21/2018");
+        logSheet.setEventDate("1/7/2018");
         logSheet.setAttendance(people);
 
         String range = "Attendance";

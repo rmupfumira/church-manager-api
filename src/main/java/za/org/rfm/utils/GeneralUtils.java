@@ -25,7 +25,7 @@ public class GeneralUtils {
             return new SimpleDateFormat(to).format(theDate);
         } catch (ParseException e) {
             e.printStackTrace();
+            return date;
         }
-        return "";
     }
 }

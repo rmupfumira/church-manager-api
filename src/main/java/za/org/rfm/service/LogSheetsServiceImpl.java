@@ -15,7 +15,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
 
     private static String SPREADSHEET_ID = "1wKbphg-g0h_m8c3fR0siys9kJH3UfFLLJK3FOWTxyaU";
 
-    String range = "C9:BL245";
+    String range = "Attendance";
 
     @Autowired
     MemberService memberService;

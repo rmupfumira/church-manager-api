@@ -86,20 +86,26 @@ public class SheetsServiceUtil {
 
         int columnToBeUpdated = 0;
         int index = 0;
+        int compareColumn = 2;
 
         for(Object header : headerColumn){
             index++;
             if(logSheet.getEventDate().equalsIgnoreCase(header.toString())){
                 columnToBeUpdated = index;
             }
+            if("Full Name".equalsIgnoreCase(header.toString().trim())){
+                compareColumn = index-1;
+            }
         }
 
         if(columnToBeUpdated > 0){
 
-            int keyColumn = 0;
+            //look for the name column
 
 
-            updateCellsWithNewValues(keyColumn,columnToBeUpdated,logSheet.getAttendance(),spreadSheetData.getValues());
+
+
+            updateCellsWithNewValues(compareColumn,columnToBeUpdated,logSheet.getAttendance(),spreadSheetData.getValues());
 
             return SheetsServiceUtil.updateValues(SPREADSHEET_ID,range,"RAW",spreadSheetData.getValues());
 
