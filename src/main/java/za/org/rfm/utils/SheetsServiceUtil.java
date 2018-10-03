@@ -73,6 +73,7 @@ public class SheetsServiceUtil {
                 Object keyCell = rows.get(keyColumn);
                 if (keyCell.toString().equalsIgnoreCase(entry.getKey())) {
                     rows.set(columnToBeUpdated-1, entry.getValue());
+                    break;
                 }
             }
         }

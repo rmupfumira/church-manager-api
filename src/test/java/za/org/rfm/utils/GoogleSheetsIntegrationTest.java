@@ -54,8 +54,8 @@ public class GoogleSheetsIntegrationTest {
 
         Map<String, String> people = new HashMap<>();
 
-        people.put("Angeline Milazi","testing1111");
-        people.put("Avela Mthini","testing2222");
+        people.put("Angeline Milazi",Constants.ABSENT);
+        people.put("Avela Mthini",Constants.ABSENT);
 
         LogSheet logSheet = new LogSheet();
         logSheet.setEventDate("1/7/2018");
@@ -66,7 +66,7 @@ public class GoogleSheetsIntegrationTest {
         UpdateValuesResponse response = SheetsServiceUtil.updateAttendanceGoogleSheet(logSheet,SPREADSHEET_ID,range);
 
 
-       assertEquals(4692, response.getUpdatedCells().intValue());
+       assertEquals(4460, response.getUpdatedCells().intValue());
 
 
     }
