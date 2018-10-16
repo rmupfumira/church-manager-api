@@ -21,7 +21,7 @@ public class EmailTest {
         Mail mail = new Mail(from, subject, to, content);
         //System.out.println("my key:..."+System.getenv("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"));
 
-        SendGrid sg = new SendGrid("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");
+       
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
