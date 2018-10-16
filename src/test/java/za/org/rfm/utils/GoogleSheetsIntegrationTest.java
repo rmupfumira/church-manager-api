@@ -58,7 +58,7 @@ public class GoogleSheetsIntegrationTest {
         people.put("Avela Mthini",Constants.ABSENT);
 
         LogSheet logSheet = new LogSheet();
-        logSheet.setEventDate("1/7/2018");
+        logSheet.setEventDate("1/21/2018");
         logSheet.setAttendance(people);
 
         String range = "Attendance";

@@ -70,9 +70,14 @@ public class SheetsServiceUtil {
         for (Map.Entry<String, String> entry : map.entrySet()) {
             System.out.println(entry.getKey() + "/" + entry.getValue());
             for (List<Object> rows : _values) {
-                Object keyCell = rows.get(keyColumn);
-                if (keyCell.toString().equalsIgnoreCase(entry.getKey())) {
-                    rows.set(columnToBeUpdated-1, entry.getValue());
+                try {
+                    Object keyCell = rows.get(keyColumn);
+                    if (keyCell.toString().equalsIgnoreCase(entry.getKey())) {
+                        rows.set(columnToBeUpdated-1, entry.getValue());
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println("...error..."+e.getMessage());
                     break;
                 }
             }
