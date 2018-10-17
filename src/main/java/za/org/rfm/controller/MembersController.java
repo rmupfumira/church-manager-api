@@ -1,12 +1,11 @@
 package za.org.rfm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import za.org.rfm.entity.Member;
 import za.org.rfm.service.LogSheetsService;
 import za.org.rfm.service.MemberService;
@@ -24,10 +23,10 @@ public class MembersController {
     @Autowired
     MemberService memberService;
 
-    @PostMapping("/members/update")
-    public ResponseEntity<String> refreshmembers(){
+    @PostMapping("/members/update/{id}")
+    public ResponseEntity<String> refreshmembers( @PathVariable("id") Integer id){
         try {
-            logSheetsService.refreshLogSheet();
+            logSheetsService.refreshLogSheet(id);
             return new ResponseEntity<>("LogSheet Saved", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,14 +34,23 @@ public class MembersController {
         }
     }
 
-    @GetMapping("/members")
-    public ResponseEntity<List<Member>> getMembers(){
+    @GetMapping("/members/{id}")
+    public ResponseEntity<List<Member>> getMembers( @PathVariable("id") Integer id){
         try {
-            List<Member> members = memberService.getAllMembers();
+            List<Member> members = memberService.getAllMembers(id);
             return new ResponseEntity<>(members, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().body(Collections.EMPTY_LIST);
         }
+    }
+
+    @PostMapping("/members/{id}")
+    public ResponseEntity<Void> addMember(@RequestBody Member member, @PathVariable("id") Integer id, UriComponentsBuilder builder) {
+        memberService.addMember(member,id);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(builder.path("{id}").buildAndExpand(member.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 }

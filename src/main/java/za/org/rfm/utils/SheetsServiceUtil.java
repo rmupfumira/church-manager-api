@@ -13,7 +13,6 @@ import za.org.rfm.entity.Member;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class SheetsServiceUtil {
@@ -121,10 +120,8 @@ public class SheetsServiceUtil {
 
     }
 
-    public static List<Member> getAllMembersFromSpreadSheet(String SPREADSHEET_ID) throws IOException,GeneralSecurityException{
+    public static List<Member> getAllMembersFromSpreadSheet(String SPREADSHEET_ID, String range) throws IOException,GeneralSecurityException{
         List<Member> members = new ArrayList<>();
-
-        String range = "Attendance";
 
         ValueRange result = SheetsServiceUtil.getValues(SPREADSHEET_ID,range);
 

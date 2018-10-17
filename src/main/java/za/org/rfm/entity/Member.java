@@ -1,9 +1,12 @@
 package za.org.rfm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "Member")
 public class Member extends DatabaseEntity{
@@ -35,6 +38,13 @@ public class Member extends DatabaseEntity{
     @Getter
     @Setter
     public String maritalStatus;
+
+    @Getter
+    @Setter
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "assemblyId")
+    private Assembly assembly;
 
     public Member() {
     }

@@ -4,5 +4,5 @@ import za.org.rfm.entity.Guest;
 
 public interface EmailService {
 
-    void sendWebSiteEmail(Guest guest);
+    public void prepareAndSend(String recipient, String message);
 }

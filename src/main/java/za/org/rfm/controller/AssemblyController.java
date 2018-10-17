@@ -24,7 +24,7 @@ public class AssemblyController {
 	@Autowired
 	private AssemblyService assemblyService;
 	@GetMapping("{id}")
-	public ResponseEntity<Assembly> getArticleById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Assembly> getAssemblyById(@PathVariable("id") Integer id) {
 		Assembly assembly = assemblyService.getAssemblyById(id);
 		return new ResponseEntity<Assembly>(assembly, HttpStatus.OK);
 	}

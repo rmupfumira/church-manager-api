@@ -21,16 +21,13 @@ public class WelcomeController {
     @Autowired
     private AssemblyService assemblyService;
 
-    @Autowired
-    private EmailService emailService;
-
     @RequestMapping("/")
     public String welcome(Map<String, Object> model) {
         return "Church manager Api Working!";
     }
     @PostMapping("/guest")
     public void sendWebsiteEnquiryEmail(@RequestBody Guest guest){
-        emailService.sendWebSiteEmail(guest);
+        //emailService.sendWebSiteEmail(guest);
 
     }
 

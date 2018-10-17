@@ -13,6 +13,9 @@ public class Assembly extends DatabaseEntity{
     @OneToMany(mappedBy = "assembly")
     private List<Transaction> transactionList;
 
+    @OneToMany(mappedBy = "assembly")
+    private List<Member> members;
+
     public String getName() {
         return name;
     }

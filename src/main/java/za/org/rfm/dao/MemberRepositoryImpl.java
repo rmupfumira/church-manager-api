@@ -23,9 +23,11 @@ public class MemberRepositoryImpl implements MemberRepository {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Member> getAllMembers() {
-        String hql = "FROM Member ";
-        return (List<Member>) entityManager.createQuery(hql).getResultList();
+    public List<Member> getAllMembers(Integer assemblyId) {
+        String hql = "FROM Member m where m.assembly.id= :id";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("id",assemblyId);
+        return (List<Member>)query.getResultList();
     }
 
     @Override

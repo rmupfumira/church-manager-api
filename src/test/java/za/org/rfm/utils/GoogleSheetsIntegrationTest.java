@@ -7,19 +7,18 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.util.StringUtils;
 import za.org.rfm.entity.LogSheet;
 import za.org.rfm.entity.Member;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.text.ParseException;
 import java.util.*;
 
 import static org.junit.Assert.*;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
+
 public class GoogleSheetsIntegrationTest {
 
     private static Sheets sheetsService;
@@ -66,7 +65,7 @@ public class GoogleSheetsIntegrationTest {
         UpdateValuesResponse response = SheetsServiceUtil.updateAttendanceGoogleSheet(logSheet,SPREADSHEET_ID,range);
 
 
-       assertEquals(4460, response.getUpdatedCells().intValue());
+       assertEquals(11852, response.getUpdatedCells().intValue());
 
 
     }
@@ -74,8 +73,8 @@ public class GoogleSheetsIntegrationTest {
 
     @Test
     public void testUploadMembersFromGoogleSheet()throws IOException, GeneralSecurityException {
-
-        List<Member> members = SheetsServiceUtil.getAllMembersFromSpreadSheet(SPREADSHEET_ID);
+        String range = "Attendance";
+        List<Member> members = SheetsServiceUtil.getAllMembersFromSpreadSheet(SPREADSHEET_ID, range);
 
         assertEquals(231,members.size());
     }

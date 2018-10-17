@@ -13,9 +13,9 @@ import java.util.List;
 @Service
 public class LogSheetsServiceImpl implements LogSheetsService {
 
-    private static String SPREADSHEET_ID = "1wKbphg-g0h_m8c3fR0siys9kJH3UfFLLJK3FOWTxyaU";
+    private static String SPREADSHEET_ID = "1FVcIACCeLqmUs_vzROnJ0Exk2btJ6Rsw7A4ch8j4ago";
 
-    String range = "Attendance";
+    String range = "Attendance Members2018";
 
     @Autowired
     MemberService memberService;
@@ -26,9 +26,9 @@ public class LogSheetsServiceImpl implements LogSheetsService {
     }
 
     @Override
-    public void refreshLogSheet()throws GeneralSecurityException,Exception {
-        List<Member> members = SheetsServiceUtil.getAllMembersFromSpreadSheet(SPREADSHEET_ID);
+    public void refreshLogSheet(Integer id)throws GeneralSecurityException,Exception {
+        List<Member> members = SheetsServiceUtil.getAllMembersFromSpreadSheet(SPREADSHEET_ID,range);
 
-        memberService.updateMembersDataBase(members);
+        memberService.updateMembersDataBase(members,id);
     }
 }
