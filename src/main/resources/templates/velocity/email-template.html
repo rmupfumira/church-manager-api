@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Sending Email with Thymeleaf HTML Template Example</title>
+    <title>RFM Stats Dashboard</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -26,15 +26,16 @@
     </tr>
     <tr>
         <td bgcolor="#eaeaea" style="padding: 40px 30px 40px 30px;">
-            <p>Dear ${name},</p>
-            <p>Sending Email using Spring Boot with <b>Thymeleaf template !!!</b></p>
+            <p>Dear Russel,</p>
+            <p>A logsheet has been uploaded for Service dated  <b>${eventDate}</b></p>
+            <p>Please check the online Google Sheet for more information  <a href="https://docs.google.com/spreadsheets/d/1FVcIACCeLqmUs_vzROnJ0Exk2btJ6Rsw7A4ch8j4ago/edit#gid=0">View More</a></p>
             <p>Thanks</p>
         </td>
     </tr>
     <tr>
         <td bgcolor="#777777" style="padding: 30px 30px 30px 30px;">
-            <p>${signature}</p>
-            <p>${location}</p>
+            <p><a href="http://rfm.org.za/dashboard/">RFM Stats Dashboard</a></p>
+            <p></p>
         </td>
     </tr>
 </table>
