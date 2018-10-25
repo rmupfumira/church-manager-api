@@ -1,4 +1,4 @@
-package za.org.rfm.service;
+package za.org.rfm.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +10,8 @@ import za.org.rfm.dao.AssemblyRepository;
 import za.org.rfm.dao.TransactionRepository;
 import za.org.rfm.entity.Assembly;
 import za.org.rfm.entity.Transaction;
+import za.org.rfm.service.TransactionService;
+
 @Service
 public class TransactionServiceImpl implements TransactionService {
 

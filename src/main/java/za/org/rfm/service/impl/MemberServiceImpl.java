@@ -1,4 +1,4 @@
-package za.org.rfm.service;
+package za.org.rfm.service.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +8,7 @@ import za.org.rfm.dao.AssemblyRepository;
 import za.org.rfm.dao.MemberRepository;
 import za.org.rfm.entity.Assembly;
 import za.org.rfm.entity.Member;
+import za.org.rfm.service.MemberService;
 
 import java.util.List;
 

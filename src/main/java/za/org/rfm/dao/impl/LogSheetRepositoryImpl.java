@@ -1,22 +1,22 @@
-package za.org.rfm.dao;
+package za.org.rfm.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import za.org.rfm.dao.LogSheetRepository;
+import za.org.rfm.entity.LogSheet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import za.org.rfm.entity.Guest;
-
 @Transactional
 @Repository
-public class GuestRepositoryImpl implements GuestRepository{
-
+public class LogSheetRepositoryImpl implements LogSheetRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void saveGuest(Guest guest){
-        entityManager.persist(guest);
+    @Override
+    public void addLogSheet(LogSheet logSheet) {
+        entityManager.persist(logSheet);
     }
 }
