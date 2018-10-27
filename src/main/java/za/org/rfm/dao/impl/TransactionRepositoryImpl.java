@@ -1,4 +1,4 @@
-package za.org.rfm.dao;
+package za.org.rfm.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import za.org.rfm.dao.TransactionRepository;
 import za.org.rfm.entity.Transaction;
 
 @Transactional

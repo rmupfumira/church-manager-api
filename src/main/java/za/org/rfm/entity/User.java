@@ -7,26 +7,29 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
-import java.util.Date;
-import java.util.Map;
 
-@Entity(name = "LogSheet")
-public class LogSheet extends DatabaseEntity {
-
+@Entity(name = "User")
+public class User extends DatabaseEntity{
 
     @Getter
     @Setter
-    @Transient
-    String assemblyId;
+    private String userName;
 
     @Getter
     @Setter
-    String eventDate;
+    private String password;
 
     @Getter
     @Setter
-    Map<String,String> attendance;
+    private String fullName;
+
+    @Getter
+    @Setter
+    private String status;
+
+    @Getter
+    @Setter
+    private String emailAddress;
 
     @Getter
     @Setter
@@ -34,4 +37,5 @@ public class LogSheet extends DatabaseEntity {
     @ManyToOne
     @JoinColumn(name = "assemblyId")
     private Assembly assembly;
+
 }

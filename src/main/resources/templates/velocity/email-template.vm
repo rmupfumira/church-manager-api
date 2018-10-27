@@ -18,23 +18,18 @@
 </head>
 <body style="margin: 0; padding: 0;">
 
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
-    <tr>
-        <td align="center" bgcolor="#78ab46" style="padding: 40px 0 30px 0;">
-            <img src="http://rfm.org.za/cloud/images/apostle.jpg" alt="http://rfm.org.za/cloud/images/apostle.jpg" style="display: block;" />
-        </td>
-    </tr>
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600" bgcolor="#eaeaea" style="border-collapse: collapse;">
     <tr>
         <td bgcolor="#eaeaea" style="padding: 40px 30px 40px 30px;">
-            <p>Dear Russel,</p>
+            <p>Dear ${name},</p>
             <p>A logsheet has been uploaded for Service dated  <b>${eventDate}</b></p>
             <p>Please check the online Google Sheet for more information  <a href="https://docs.google.com/spreadsheets/d/1FVcIACCeLqmUs_vzROnJ0Exk2btJ6Rsw7A4ch8j4ago/edit#gid=0">View More</a></p>
             <p>Thanks</p>
         </td>
     </tr>
     <tr>
-        <td bgcolor="#777777" style="padding: 30px 30px 30px 30px;">
-            <p><a href="http://rfm.org.za/dashboard/">RFM Stats Dashboard</a></p>
+        <td  style="padding: 30px 30px 30px 30px;">
+            <p><a href="http://rfm.org.za/dashboard/">Visit RFM Stats Dashboard</a></p>
             <p></p>
         </td>
     </tr>

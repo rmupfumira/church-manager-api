@@ -1,7 +1,8 @@
-package za.org.rfm.dao;
+package za.org.rfm.dao.impl;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import za.org.rfm.dao.MemberRepository;
 import za.org.rfm.entity.Member;
 
 import javax.persistence.EntityManager;
