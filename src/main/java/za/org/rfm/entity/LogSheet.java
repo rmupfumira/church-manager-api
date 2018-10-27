@@ -24,6 +24,7 @@ public class LogSheet extends DatabaseEntity {
     @Setter
     String eventDate;
 
+    @Transient
     @Getter
     @Setter
     Map<String,String> attendance;
