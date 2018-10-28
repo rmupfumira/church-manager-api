@@ -12,6 +12,7 @@ import za.org.rfm.entity.LogSheet;
 import za.org.rfm.entity.Member;
 import za.org.rfm.entity.User;
 import za.org.rfm.mail.Mail;
+import za.org.rfm.service.AssemblyService;
 import za.org.rfm.service.LogSheetsService;
 import za.org.rfm.service.MailService;
 import za.org.rfm.service.MemberService;
@@ -46,6 +47,10 @@ public class LogSheetsServiceImpl implements LogSheetsService {
     MemberService memberService;
 
     @Autowired
+    AssemblyService assemblyService;
+
+
+    @Autowired
     LogSheetRepository logSheetRepository;
 
     private static final String CHARSET_UTF8 = "UTF-8";
@@ -53,6 +58,9 @@ public class LogSheetsServiceImpl implements LogSheetsService {
     @Override
     public void addLogSheet(LogSheet logSheet) throws Exception{
         SheetsServiceUtil.updateAttendanceGoogleSheet(logSheet,SPREADSHEET_ID,range);
+        logSheet.setAssemblyId(1);
+        Assembly as = assemblyService.getAssemblyById(logSheet.getAssemblyId());
+        logSheet.setAssembly(as);
         logSheetRepository.addLogSheet(logSheet);
         Assembly assembly = logSheet.getAssembly();
         assembly.setUsers(new ArrayList<>());

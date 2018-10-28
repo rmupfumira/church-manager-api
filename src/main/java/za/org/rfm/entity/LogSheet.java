@@ -18,7 +18,7 @@ public class LogSheet extends DatabaseEntity {
     @Getter
     @Setter
     @Transient
-    String assemblyId;
+    Integer assemblyId;
 
     @Getter
     @Setter
