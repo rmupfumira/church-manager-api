@@ -21,6 +21,7 @@ import org.apache.velocity.app.VelocityEngine;
 
 import javax.mail.internet.MimeMessage;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         SheetsServiceUtil.updateAttendanceGoogleSheet(logSheet,SPREADSHEET_ID,range);
         logSheetRepository.addLogSheet(logSheet);
         Assembly assembly = logSheet.getAssembly();
+        assembly.setUsers(new ArrayList<>());
         User user = new User();
         user.setFullName("Russel");
         user.setEmailAddress("russel@rfm.org.za");
