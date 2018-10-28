@@ -70,13 +70,13 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         assembly.getUsers().add(user);
 
         User user2 = new User();
-        user2.setFullName("Russel111");
-        user2.setEmailAddress("russel@rfm.org.za");
+        user2.setFullName("Shelton");
+        user2.setEmailAddress("shelton@premierlink.co.za");
         assembly.getUsers().add(user2);
 
         User user3 = new User();
-        user3.setFullName("Russel2222");
-        user3.setEmailAddress("russel@rfm.org.za");
+        user3.setFullName("Tinarwo Chabuka");
+        user3.setEmailAddress("tinachab.tc@gmail.com");
         assembly.getUsers().add(user3);
         if(assembly != null){
             if(assembly.getUsers() != null && !assembly.getUsers().isEmpty())
