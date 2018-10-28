@@ -54,11 +54,25 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         SheetsServiceUtil.updateAttendanceGoogleSheet(logSheet,SPREADSHEET_ID,range);
         logSheetRepository.addLogSheet(logSheet);
         Assembly assembly = logSheet.getAssembly();
+        User user = new User();
+        user.setFullName("Russel");
+        user.setEmailAddress("russel@rfm.org.za");
+        assembly.getUsers().add(user);
+
+        User user2 = new User();
+        user2.setFullName("Russel111");
+        user2.setEmailAddress("russel@rfm.org.za");
+        assembly.getUsers().add(user2);
+
+        User user3 = new User();
+        user3.setFullName("Russel2222");
+        user3.setEmailAddress("russel@rfm.org.za");
+        assembly.getUsers().add(user3);
         if(assembly != null){
             if(assembly.getUsers() != null && !assembly.getUsers().isEmpty())
-                for (User user:
+                for (User usr:
                         assembly.getUsers()) {
-                    sendConfirmationEmail(logSheet,user);
+                    sendConfirmationEmail(logSheet,usr);
                 }
 
         }
