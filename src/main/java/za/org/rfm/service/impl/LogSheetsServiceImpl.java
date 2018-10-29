@@ -12,6 +12,7 @@ import za.org.rfm.entity.LogSheet;
 import za.org.rfm.entity.Member;
 import za.org.rfm.entity.User;
 import za.org.rfm.mail.Mail;
+import za.org.rfm.service.AssemblyService;
 import za.org.rfm.service.LogSheetsService;
 import za.org.rfm.service.MailService;
 import za.org.rfm.service.MemberService;
@@ -21,6 +22,7 @@ import org.apache.velocity.app.VelocityEngine;
 
 import javax.mail.internet.MimeMessage;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +47,10 @@ public class LogSheetsServiceImpl implements LogSheetsService {
     MemberService memberService;
 
     @Autowired
+    AssemblyService assemblyService;
+
+
+    @Autowired
     LogSheetRepository logSheetRepository;
 
     private static final String CHARSET_UTF8 = "UTF-8";
@@ -52,21 +58,25 @@ public class LogSheetsServiceImpl implements LogSheetsService {
     @Override
     public void addLogSheet(LogSheet logSheet) throws Exception{
         SheetsServiceUtil.updateAttendanceGoogleSheet(logSheet,SPREADSHEET_ID,range);
+        logSheet.setAssemblyId(1);
+        Assembly as = assemblyService.getAssemblyById(logSheet.getAssemblyId());
+        logSheet.setAssembly(as);
         logSheetRepository.addLogSheet(logSheet);
         Assembly assembly = logSheet.getAssembly();
+        assembly.setUsers(new ArrayList<>());
         User user = new User();
         user.setFullName("Russel");
         user.setEmailAddress("russel@rfm.org.za");
         assembly.getUsers().add(user);
 
         User user2 = new User();
-        user2.setFullName("Russel111");
-        user2.setEmailAddress("russel@rfm.org.za");
+        user2.setFullName("Shelton");
+        user2.setEmailAddress("shelton@premierlink.co.za");
         assembly.getUsers().add(user2);
 
         User user3 = new User();
-        user3.setFullName("Russel2222");
-        user3.setEmailAddress("russel@rfm.org.za");
+        user3.setFullName("Tinarwo Chabuka");
+        user3.setEmailAddress("tinachab.tc@gmail.com");
         assembly.getUsers().add(user3);
         if(assembly != null){
             if(assembly.getUsers() != null && !assembly.getUsers().isEmpty())
