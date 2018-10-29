@@ -25,4 +25,9 @@ public class MemberLogsheet extends DatabaseEntity {
     @JoinColumn(name = "logsheetId")
     private LogSheet logSheet;
 
+    public MemberLogsheet(Member member, LogSheet logSheet, boolean present) {
+        this.member = member;
+        this.present = present;
+        this.logSheet = logSheet;
+    }
 }
