@@ -68,7 +68,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         user.setFullName("Russel");
         user.setEmailAddress("russel@rfm.org.za");
         assembly.getUsers().add(user);
-
+/*
         User user2 = new User();
         user2.setFullName("Shelton");
         user2.setEmailAddress("shelton@premierlink.co.za");
@@ -77,7 +77,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         User user3 = new User();
         user3.setFullName("Tinarwo Chabuka");
         user3.setEmailAddress("tinachab.tc@gmail.com");
-        assembly.getUsers().add(user3);
+        assembly.getUsers().add(user3);*/
         if(assembly != null){
             if(assembly.getUsers() != null && !assembly.getUsers().isEmpty())
                 for (User usr:
