@@ -61,14 +61,14 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         logSheet.setAssemblyId(1);
         Assembly as = assemblyService.getAssemblyById(logSheet.getAssemblyId());
         logSheet.setAssembly(as);
-        logSheetRepository.addLogSheet(logSheet);
+        logSheet = logSheetRepository.addLogSheet(logSheet);
         Assembly assembly = logSheet.getAssembly();
         assembly.setUsers(new ArrayList<>());
         User user = new User();
         user.setFullName("Russel");
-        user.setEmailAddress("russel@rfm.org.za");
+        user.setEmailAddress("russel@premierlink.co.za");
         assembly.getUsers().add(user);
-/*
+
         User user2 = new User();
         user2.setFullName("Shelton");
         user2.setEmailAddress("shelton@premierlink.co.za");
@@ -77,7 +77,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         User user3 = new User();
         user3.setFullName("Tinarwo Chabuka");
         user3.setEmailAddress("tinachab.tc@gmail.com");
-        assembly.getUsers().add(user3);*/
+        assembly.getUsers().add(user3);
         if(assembly != null){
             if(assembly.getUsers() != null && !assembly.getUsers().isEmpty())
                 for (User usr:
@@ -105,6 +105,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         Map< String, Object > model = new HashMap<>();
         model.put("eventDate", logSheet.getEventDate());
         model.put("name", user.getFullName());
+        model.put("attendance", logSheet.getTotalAttendance());
         mail.setModel(model);
         String contentAsString = getContentFromTemplate(model);
         mailService.sendEmail(mail,contentAsString);
