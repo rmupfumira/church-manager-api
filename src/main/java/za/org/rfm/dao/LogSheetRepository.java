@@ -4,5 +4,5 @@ import za.org.rfm.entity.LogSheet;
 
 public interface LogSheetRepository {
 
-    void addLogSheet(LogSheet logSheet);
+    LogSheet addLogSheet(LogSheet logSheet);
 }

@@ -28,4 +28,11 @@ public class GeneralUtils {
             return date;
         }
     }
+
+    public static Boolean isPresent(String present){
+        if("Present".equalsIgnoreCase(present)){
+            return true;
+        }
+        return false;
+    }
 }
