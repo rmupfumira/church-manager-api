@@ -36,9 +36,9 @@ public class AssemblyTest {
         this.assemblyRepository.d();
         this.accountRepository.deleteAllInBatch();
 
-        this.account = accountRepository.save(new Account(userName, "password"));
-        this.bookmarkList.add(bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/1/" + userName, "A description")));
-        this.bookmarkList.add(bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/2/" + userName, "A description")));*/
+        this.account = accountRepository.save(new Account(username, "password"));
+        this.bookmarkList.add(bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/1/" + username, "A description")));
+        this.bookmarkList.add(bookmarkRepository.save(new Bookmark(account, "http://bookmark.com/2/" + username, "A description")));*/
     }
 
     @Test
