@@ -20,24 +20,20 @@ public class User extends DatabaseEntity{
     @Setter
     private String password;
 
-    @JsonIgnore
     @Getter
     @Setter
     private String fullName;
 
-    @JsonIgnore
     @Getter
     @Setter
     private String status;
 
-    @JsonIgnore
     @Getter
     @Setter
     private String emailAddress;
 
     @Getter
     @Setter
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "assemblyId")
     private Assembly assembly;

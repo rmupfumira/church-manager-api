@@ -1,5 +1,6 @@
 package za.org.rfm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,16 +17,19 @@ public class Assembly extends DatabaseEntity{
     @Setter
     private String name;
 
+    @JsonIgnore
     @Getter
     @Setter
     @OneToMany(mappedBy = "assembly")
     private List<Transaction> transactionList;
 
+    @JsonIgnore
     @Getter
     @Setter
     @OneToMany(mappedBy = "assembly")
     private List<Member> members;
 
+    @JsonIgnore
     @Getter
     @Setter
     @OneToMany(mappedBy = "assembly",fetch= FetchType.EAGER)
