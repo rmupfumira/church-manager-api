@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import java.util.Objects;
 
 @Entity(name = "User")
@@ -37,6 +38,11 @@ public class User extends DatabaseEntity{
     @ManyToOne
     @JoinColumn(name = "assemblyId")
     private Assembly assembly;
+
+    @Transient
+    @Getter
+    @Setter
+    private Integer assemblyId;
 
     @Override
     public boolean equals(Object o) {

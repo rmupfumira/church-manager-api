@@ -42,4 +42,13 @@ public class LoginController {
        }
       return ResponseEntity.badRequest().body(null);
     }
+
+    @PostMapping("create")
+    public ResponseEntity<String> addUser(@RequestBody User user) {
+        if(StringUtils.isNotEmpty(user.getUsername()) && StringUtils.isNotEmpty(user.getPassword())){
+            authService.addUser(user);
+            return ResponseEntity.ok("User "+user.getFullName()+" created");
+        }
+        return ResponseEntity.badRequest().body(null);
+    }
 }

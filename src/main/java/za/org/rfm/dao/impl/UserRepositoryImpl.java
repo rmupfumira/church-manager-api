@@ -24,4 +24,9 @@ public class UserRepositoryImpl implements UserRepository {
         query.setParameter("username",username.trim());
         return (User) query.getResultList().stream().findFirst().orElse(null);
     }
+
+    @Override
+    public void addUser(User user) {
+        entityManager.persist(user);
+    }
 }
