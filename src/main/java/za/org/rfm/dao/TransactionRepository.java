@@ -7,10 +7,9 @@ import za.org.rfm.entity.Transaction;
 
 public interface TransactionRepository {
 
+    void addTransaction(Transaction transaction);
 
-    public void addTransaction(Transaction transaction);
+    List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate);
 
-    public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate);
-
-    public List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate,String type);
+    List<Transaction> getTransactionsByAssembly(Integer assemblyId, Date startDate, Date endDate,String type);
 }
