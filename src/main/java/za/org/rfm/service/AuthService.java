@@ -5,4 +5,6 @@ import za.org.rfm.entity.User;
 public interface AuthService {
 
     User doLogin(User user);
+
+    void addUser(User user);
 }
