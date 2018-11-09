@@ -12,6 +12,8 @@ import za.org.rfm.utils.GeneralUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Transactional
@@ -25,7 +27,8 @@ public class LogSheetRepositoryImpl implements LogSheetRepository {
     MemberRepository memberRepository;
 
     @Override
-    public void addLogSheet(LogSheet logSheet) {
+    public LogSheet addLogSheet(LogSheet logSheet) {
+        List<MemberLogsheet> memberLogsheets = new ArrayList<>();
         entityManager.persist(logSheet);
         for (Map.Entry<String, String> entry : logSheet.getAttendance().entrySet())
         {
@@ -33,8 +36,11 @@ public class LogSheetRepositoryImpl implements LogSheetRepository {
             Member member = memberRepository.getMemberByFullName(entry.getKey());
             if(member != null){
                 MemberLogsheet memberLogsheet = new MemberLogsheet(member,logSheet, GeneralUtils.isPresent(entry.getValue()));
+                memberLogsheets.add(memberLogsheet);
+                logSheet.setMemberLogsheets(memberLogsheets);
                 entityManager.persist(memberLogsheet);
             }
         }
+        return logSheet;
     }
 }
