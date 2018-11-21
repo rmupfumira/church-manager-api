@@ -1,15 +1,17 @@
 package za.org.rfm.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import za.org.rfm.entity.LogSheet;
 import za.org.rfm.service.LogSheetsService;
 import za.org.rfm.utils.Constants;
 import za.org.rfm.utils.GeneralUtils;
+
+import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @RestController
@@ -35,5 +37,17 @@ public class LogSheetController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body("Encountered an error");
         }
+    }
+
+    @RequestMapping(
+        value = "/logsheets/{assemblyId}",
+        params = {"limit"},
+        method = GET
+    )
+    public ResponseEntity<?> getLogSheets(@PathVariable Integer assemblyId,@RequestParam Integer limit){
+
+        List<LogSheet> logSheetList = logSheetsService.getLogSheets(assemblyId,limit);
+
+        return new ResponseEntity<>(logSheetList, HttpStatus.OK);
     }
 }

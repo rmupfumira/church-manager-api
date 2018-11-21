@@ -36,7 +36,7 @@ public class MailTest {
     public void sendEmail() throws Exception {
         Mail mail = new Mail();
         mail.setMailFrom("russel@rfm.org.za");
-        mail.setMailTo("russel@premierlink.co.za");
+        mail.setMailTo("russel@premierlink1.co.za");
         mail.setMailSubject("Test velocity template");
 
         Map< String, Object > model = new HashMap<>();

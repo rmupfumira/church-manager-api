@@ -69,7 +69,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         user.setEmailAddress("russel@premierlink.co.za");
         assembly.getUsers().add(user);
 
-        User user2 = new User();
+/*        User user2 = new User();
         user2.setFullName("Shelton");
         user2.setEmailAddress("shelton@premierlink.co.za");
         assembly.getUsers().add(user2);
@@ -77,7 +77,7 @@ public class LogSheetsServiceImpl implements LogSheetsService {
         User user3 = new User();
         user3.setFullName("Tinarwo Chabuka");
         user3.setEmailAddress("tinachab.tc@gmail.com");
-        assembly.getUsers().add(user3);
+        assembly.getUsers().add(user3);*/
         if(assembly != null){
             if(assembly.getUsers() != null && !assembly.getUsers().isEmpty())
                 for (User usr:
@@ -119,5 +119,10 @@ public class LogSheetsServiceImpl implements LogSheetsService {
             e.printStackTrace();
         }
         return content.toString();
+    }
+
+    @Override
+    public List<LogSheet> getLogSheets(Integer assemblyId,Integer limit) {
+        return logSheetRepository.findLogSheetsByAssembly(assemblyId,limit);
     }
 }

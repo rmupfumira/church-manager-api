@@ -34,6 +34,7 @@ public class LogSheet extends DatabaseEntity {
     @JoinColumn(name = "assemblyId")
     private Assembly assembly;
 
+    @JsonIgnore
     @Getter
     @Setter
     @OneToMany(mappedBy = "logSheet")

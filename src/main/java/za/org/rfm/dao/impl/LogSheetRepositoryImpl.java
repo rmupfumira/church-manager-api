@@ -12,6 +12,7 @@ import za.org.rfm.utils.GeneralUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,5 +43,15 @@ public class LogSheetRepositoryImpl implements LogSheetRepository {
             }
         }
         return logSheet;
+    }
+
+    @Override
+    public List<LogSheet> findLogSheetsByAssembly(Integer assemblyId, Integer limit) {
+        String hql = "FROM LogSheet lg where lg.assembly.id= :assemblyId order by created desc";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("assemblyId",assemblyId);
+        query.setMaxResults(limit);
+        List<LogSheet> logSheets = (List<LogSheet>) query.getResultList();
+        return logSheets;
     }
 }

@@ -126,8 +126,14 @@
 			<artifactId>google-api-services-sqladmin</artifactId>
 			<version>v1beta4-rev65-1.25.0</version>
 		</dependency>
+        <dependency>
+            <groupId>com.vaadin.external.google</groupId>
+            <artifactId>android-json</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 	<build>
 		<plugins>
 			<plugin>
